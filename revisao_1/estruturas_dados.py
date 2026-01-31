@@ -72,7 +72,7 @@ def criar_obj_pss(quantidade_pessoas: Union[int, None]= None) -> List[Pessoa]:
     for numero in range(0, quantidade_pessoas):
 
         nome = faker.name_male()
-        idade = random.randint(10, 30)
+        idade = random.randint(24, 30)
         endereco = faker.address()
 
         pessoa = Pessoa(nome, idade, endereco)
@@ -82,44 +82,88 @@ def criar_obj_pss(quantidade_pessoas: Union[int, None]= None) -> List[Pessoa]:
     return lista
 
 
-try:
-    pessoas = criar_obj_pss()
+# Criando um dicionário de funções 
 
-    for pessoa in pessoas:
+from typing import Dict 
 
-        print(pessoa.nome)
+distribuicao: Dict[str, list]  = {}
 
-except ValueError as message:
 
-    print(message)
-    time.sleep(2)
+pessoas = criar_obj_pss(10)
 
-    print("""A quantidade de pessoas deve 
-ser descrita utilizando números inteiros.""")
-    time.sleep(2)
+cargos = ["analista_de_testes", "engenheiro_de_ia", "cientista_de_dados"]
 
-    print("Tentando novamente...")
-    time.sleep(2)
+for numero in range(0, 3):
 
-    pessoas = criar_obj_pss(10)
+    cargo = cargos[numero]
 
-    for pessoa in pessoas:
+    distribuicao[cargo] = [random.choice(pessoas) for _ in range(0, 3)]
 
-        print(f"""
-{pessoa.nome}
+
+# print(distribuicao['analista_testes'])
+
+# print(distribuicao)
+
+# for funcionario in distribuicao['analista_testes']:
+#     print(funcionario.nome)
+
+
+for chave, valor in distribuicao.items():
+    # print(chave)
+
+    chave_formatada = chave.replace("_", " ")
+
+    print(f"============= {chave_formatada.title()} ==============")
+    print("")
+
+    for funcionario in valor:
+        print(f"""Nome: {funcionario.nome} 
+Idade: {funcionario.idade}
+Endereço: {funcionario.endereco}
 """)
 
 
-else: 
 
-    print("Operação concluída com sucesso...")
-    time.sleep(2)
+# try:
+#     pessoas = criar_obj_pss()
 
-    print("Nenhum erro detectado!")
-    time.sleep(2)
+#     for pessoa in pessoas:
 
-finally:
+#         print(pessoa.nome)
 
-    print("Programa iterado...")
-    time.sleep(2)
+        
+
+# except ValueError as message:
+
+#     print(message)
+#     time.sleep(2)
+
+#     print("""A quantidade de pessoas deve 
+# ser descrita utilizando números inteiros.""")
+#     time.sleep(2)
+
+#     print("Tentando novamente...")
+#     time.sleep(2)
+
+#     pessoas = criar_obj_pss(10)
+
+#     for pessoa in pessoas:
+
+#         print(f"""
+# {pessoa.nome}
+# """)
+
+
+# else: 
+
+#     print("Operação concluída com sucesso...")
+#     time.sleep(2)
+
+#     print("Nenhum erro detectado!")
+#     time.sleep(2)
+
+# finally:
+
+#     print("Programa iterado...")
+#     time.sleep(2)
 

@@ -52,7 +52,7 @@ copiando_string += " Silva"
 # print(string_original[:4])
 
 
-palavras = "Fique tranquilo tudo irá dar certo"
+palavras = "Tenha um bom dia"
 lista_palavras = palavras.split(" ")
 # print(lista_palavras) 
 

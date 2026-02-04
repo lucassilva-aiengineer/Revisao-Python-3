@@ -82,10 +82,34 @@ def funcao_a():
     global numero 
 
     numero = 10
-    print(numero)
+    # print(numero)
 
-print("Antes de alterar a função:", numero)
+# print("Antes de alterar a função:", numero)
 
-funcao_a()
+funcao_a() # Eu consigo alterar a função a variável no interior da função. 
 
-print(numero)
+# print(numero)
+
+# Funções lambda. 
+
+# Funções lambda, são funções anônimas compostas apenas três coisas: palavra_chave argumento : expressão. 
+
+dobrar = lambda argumento : argumento * 2
+
+# print(dobrar(10))
+
+adicionar = lambda parcela_a, parcela_b : parcela_a + parcela_b 
+
+# print(adicionar(10, 10)) 
+
+multiplicar = lambda fator_a, fator_b : fator_a * fator_b 
+
+# print(multiplicar(10, 2)) 
+
+dividir = lambda numerador, denominador : numerador / denominador if denominador != 0 else "Esta conta não pode ser feita"
+
+# print(10, 0)
+
+assert dividir(10, 0) == "Esta conta não pode ser feita", "O código deveria retornar esta string caso tudo ocorra como o esperado. " 
+
+# print(dividir(10, 0))

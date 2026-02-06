@@ -70,6 +70,8 @@ lista_alunos = adicionar_pessoas()
 
 # lista_pessoas: List[dict] = []
 
+# faker = Faker('pt_BR')
+
 # num_item = 0 
 # for item in lista_alunos:
 
@@ -77,12 +79,14 @@ lista_alunos = adicionar_pessoas()
 
 #     if num_item < 4: 
 
-#         dicionario_pessoa[str(num_item)] = 0 
 
-#         lista_pessoas.append(pessoa)
+#         dicionario_pessoa["nome"] = 10 
+#         pass 
+
+        # lista_pessoas.append(pessoa) 
 
 
-# #     for i in range(0, 4): 
+#     for i in range(0, 4): 
 
 
 

@@ -88,6 +88,30 @@ for tupla in alunos:
 
 #     print("Nota antiga: ")
 
-lista = [1, 2, 3, 4, 5, 6]
+# lista = [1, 2, 3, 4, 5, 6]
 
-print(list(enumerate(lista)))
+# print(list(enumerate(lista)))
+
+print(list(enumerate(alunos))) 
+
+alunos_enumerate = list(enumerate(alunos))
+
+# for aluno in alunos_enumerate: 
+
+#     print(f"""
+#     Nota antiga: {copia_alunos(aluno[0])}
+#     Nota nova: {aluno[0]}""")
+
+# print(copia_alunos[0])
+
+# print(alunos_enumerate[0][0])
+
+
+# print(copia_alunos)
+
+for aluno in alunos_enumerate: 
+
+    print(f"""
+        Nota Anterior da Prova 1 {copia_alunos[aluno[0]][2]}
+        Nota Atualizada da Prova 1 {aluno[1]}.
+    """)

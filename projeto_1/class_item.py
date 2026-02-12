@@ -1,4 +1,5 @@
 from __future__ import annotations 
+from class_funcoes import Funcoes
 from typing import List 
 
 Fornecedor = int 
@@ -16,8 +17,13 @@ class ItemEstoque:
         # Aos atributos; 
 
 
+        # Criando um objeto funcões 
+
+        objeto_funcoes = Funcoes()
+
         # Atributos privados. 
 
+        self.__id_ = objeto_funcoes.gerar_id()
         self.__nome = nome 
         self.__marca = marca 
         self.__descricao = descricao 
@@ -26,11 +32,17 @@ class ItemEstoque:
         self.__preco = preco 
         self.__custo = custo 
         self.__fornecedores = fornecedores
+        self.__status_produto = True
 
         # Adicionando o objeto item ao atributo de classe total_items.
         ItemEstoque.total_items.append(self)
 
-    # Construnindo os getters, regres de acesso, leitura dos atributos dos objetos. 
+    # Construnindo os getters, regras de acesso, leitura dos atributos dos objetos. 
+    
+    @property 
+    def id_(self):
+        return self.__id_ 
+    
     @property 
     def nome(self)-> str:
 
@@ -65,38 +77,53 @@ class ItemEstoque:
     def fornecedores(self)-> List[Fornecedor]:
         return self.__fornecedores
 
+    @property 
+    def status_produto(self)-> bool:
+        return self.__status_produto
+
     # Construindo os setters, uma forma protegida de acesso, no caso escrita de 
     # objetos. 
 
     @nome.setter 
-    def nome(self, nv_nome)-> None:
+    def nome(self, nv_nome: str)-> None:
         self.__nome 
 
     @marca.setter 
-    def marca(self, nv_marca)-> None: 
+    def marca(self, nv_marca: str)-> None: 
         self.__marca = nv_marca 
 
     @descricao.setter 
-    def descricao(self, nv_descricao)-> None:
-        self.__descricao = nova_descricao 
+    def descricao(self, nv_descricao: str)-> None:
+        self.__descricao = nv_descricao 
 
     @preco.setter 
-    def preco(self, nv_preco)-> None:
+    def preco(self, nv_preco: float)-> None:
         self.__preco = nv_preco 
 
     @custo.setter
-    def custo(self, nv_custo)-> None:
+    def custo(self, nv_custo: float)-> None:
         self.__custo = nv_custo 
 
     @quantidade.setter 
-    def quantidade(self, nv_quantidade)-> None: 
+    def quantidade(self, nv_quantidade: int)-> None: 
         self.__quantidade = nv_quantidade 
 
     @validade.setter 
-    def validade(self, nv_quantidade)-> None:
-        self.__validade = nv_quantidade
+    def validade(self, nv_validade: str)-> None:
+        self.__validade = nv_validade
 
+    # Definindo a regra de acesso voltada a alteração de atributos, que tipo de 
+    # alteração poderá ser feita. 
 
+    # No caso eu posso substituir o atributo id por qualquer outro id, mas poderiamos 
+    # muito bem restringir este acesso impondo uma regra mais proibitiva. 
+    @id_.setter
+    def id_(self, nv_id_: str):
+        self.__id_ = nv_id_ 
+
+    @status_produto.setter 
+    def status_produto(self, nv_status_produto: bool):
+        self.__status_produto = nv_status_produto 
     # Métodos referente ao nossos objetos. 
 
     def exibir_item(self)-> str:

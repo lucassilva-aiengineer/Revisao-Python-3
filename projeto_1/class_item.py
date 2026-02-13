@@ -1,16 +1,19 @@
 from __future__ import annotations 
 from class_funcoes import Funcoes
 from typing import List 
+from typing import Union 
 
 Fornecedor = int 
 
 
 class ItemEstoque:
 
+    margem_lucro = 140 / 100
+    tributacao = 130 / 100  
     total_items: List[ItemEstoque] = [] # Atributos de classe. 
     def __init__(self, nome: str= "", marca: str= "", descricao: str= "",
-            quantidade: int= 0, validade: str= "07/02/2026",
-            preco: float= 0.0, custo: float= 0.0, fornecedores: List[Fornecedor]= [])-> None:
+            quantidade: int= 0, validade: str= "07/02/2026", custo: float= 0.0,
+            fornecedores: List[Union[str, Fornecedor]]= [])-> None:
 
         # Nós criamos um objeto, ItemEstoque, acessamos este objeto e associamos a ele 
         # espaços reservados para os seguintes atributos e atribuimos os argumentos declarados 
@@ -29,8 +32,8 @@ class ItemEstoque:
         self.__descricao = descricao 
         self.__quantidade = quantidade 
         self.__validade = validade 
-        self.__preco = preco 
         self.__custo = custo 
+        self.__preco = (self.__custo * ItemEstoque.tributacao) * ItemEstoque.margem_lucro 
         self.__fornecedores = fornecedores
         self.__status_produto = True
 
@@ -158,8 +161,8 @@ Fornecedores: {str(fornecedor for fornecedor in self.__fornecedores)}
 
 # Testando os obejetos. 
 
-objeto = ItemEstoque("Arroz", "Amil", "Arroz Parbolizado 2kg")
+# objeto = ItemEstoque("Arroz", "Amil", "Arroz Parbolizado 2kg")
 
-print(objeto)
+# print(objeto)
 
-print(objeto.exibir_item())
+# print(objeto.exibir_item())

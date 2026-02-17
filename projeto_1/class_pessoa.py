@@ -1,18 +1,19 @@
 from class_funcoes import Funcoes 
 from typing import List, Optional
 
+from class_relatorio import Relatorio 
 
-try: 
-    from class_relatorio import Relatorio
+# try: 
+#     from class_relatorio import Relatorio
 
-except FileNotFoundError as message: 
-    print("Arquivo não encontrado!")
+# except FileNotFoundError as message: 
+#     print("Arquivo não encontrado!")
 
-else: 
-    print("Arquivo executado sem erros!")
+# else: 
+#     print("Arquivo executado sem erros!")
 
-finally:
-    print("Código iterado!")
+# finally:
+#     print("Código iterado!")
 
 
 funcoes = Funcoes()

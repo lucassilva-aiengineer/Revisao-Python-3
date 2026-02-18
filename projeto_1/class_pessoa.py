@@ -26,6 +26,7 @@ class Pessoa:
         # Atributos Privados
 
         self.__id_ = funcoes.gerar_id()
+        self.__nome = nome 
         self.__idade = idade 
         self.__cpf = cpf 
         self.__relatorios = relatorios  
@@ -34,6 +35,10 @@ class Pessoa:
     # Definindo o escapsulamento, proteção do acesso aos atributos. 
 
     # Defindo as regras de acesso, leitura. 
+
+    @property 
+    def nome(self)-> str:
+        return self.__nome 
     @property 
     def id_(self)-> str:
         return self.__id_
@@ -52,6 +57,10 @@ class Pessoa:
 
 
     # Definindo as regras de acesso, escrita. 
+
+    @nome.setter 
+    def nome(self, nv_nome)-> str: 
+        self.__nome = nv_nome 
 
     @id_.setter 
     def id_(self, nv_id_: str)-> None:

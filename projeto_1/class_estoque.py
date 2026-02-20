@@ -147,4 +147,4 @@ def main():
     print(estoque.custo_total)
 
 
-main()
+# main()

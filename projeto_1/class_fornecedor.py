@@ -128,4 +128,4 @@ def main():
 
     # print(faker_a.cnpj())
 
-main()
+# main()

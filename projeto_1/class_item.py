@@ -2,6 +2,8 @@ from __future__ import annotations
 from class_funcoes import Funcoes
 from typing import List 
 from typing import Union 
+from datetime import datetime, timedelta 
+from class_funcoes import Funcoes 
 
 Fornecedor = int 
 
@@ -12,7 +14,7 @@ class ItemEstoque:
     tributacao = 130 / 100  
     total_items: List[ItemEstoque] = [] # Atributos de classe. 
     def __init__(self, nome: str= "", marca: str= "", descricao: str= "",
-            quantidade: int= 0, validade: str= "07/02/2026", custo: float= 0.0,
+            quantidade: int= 0, validade: datetime= datetime.now(), custo: float= 0.0,
             fornecedores: List[Union[str, Fornecedor]]= [])-> None:
 
         # Nós criamos um objeto, ItemEstoque, acessamos este objeto e associamos a ele 
@@ -82,6 +84,13 @@ class ItemEstoque:
 
     @property 
     def status_produto(self)-> bool:
+
+        validade = self.__validade
+        hoje = datetime.now()
+
+        if validade <= hoje:
+            self.__status_produto = False 
+
         return self.__status_produto
 
     # Construindo os setters, uma forma protegida de acesso, no caso escrita de 
@@ -166,3 +175,23 @@ Fornecedores: {str(fornecedor for fornecedor in self.__fornecedores)}
 # print(objeto)
 
 # print(objeto.exibir_item())
+
+def teste():
+
+    objeto_cls_funcoes = Funcoes()
+
+    # Testando a data de um produto vencido. 
+    validade = objeto_cls_funcoes.validade_aleatoria(-100)
+
+    item = ItemEstoque(validade= validade)
+
+    # print(item.status_produto) 
+
+    if item.status_produto:
+        print("Produto dentro do prazo de validade!")
+
+    else:
+        print("Produto vencido!")
+
+
+# teste()

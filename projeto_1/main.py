@@ -6,6 +6,7 @@ from class_funcionario import Funcionario
 from class_item import ItemEstoque 
 from faker import Faker 
 import random 
+from dados_projeto import lista_produtos
 
 
 def main():
@@ -20,5 +21,6 @@ def main():
     for produto in produtos:
         print(produto.exibir_item())
 
+    print(lista_produtos.produtos_mercado)
 
 main()
